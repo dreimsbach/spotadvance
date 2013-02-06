@@ -9,6 +9,10 @@ com.dreimsbach.SpotAdvance = (function() {
   $(document).on("ready", function(){
     new SearchController(models);
     
+    $("#showNames").on("click", function() {
+      $(".albuminfo, .artistinfo").show();
+    });
+    
     $("input").each(function() {
       var _this = $(this);
       $(_this).val(_this.attr("title"));

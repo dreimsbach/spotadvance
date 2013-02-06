@@ -48,7 +48,7 @@ var SearchController = (function() {
       console.log(search);
       if(search.albums.length) {
         $.each(search.albums,function(index,album){
-          $container.append('<div class="album"><a href="'+album.data.uri+'"><img src="'+ album.data.cover +'" /></div>');
+          $container.append('<div class="album"><a href="'+album.data.uri+'"><img src="'+ album.data.cover +'" /><div class="artistinfo">' + album.data.artist.name	 + ' </div><div class="albuminfo">' + album.data.name	 + ' </div></a></div>');
         });
        $container.append('<div class="clear"></div>');
       } else {
