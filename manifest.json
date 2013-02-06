@@ -1,0 +1,30 @@
+{
+	"BundleType": "Application",
+	"BundleIdentifier": "spotadvance",
+	"BundleVersion": "0.1b",
+	"AcceptedLinkTypes":[
+		"album",
+		"artist",
+		"track",
+		"playlist",
+		"user"
+	],
+	"AppIcon": {
+		"18x18": "icon.png"
+	},
+	"AppName": {
+		"en": "Spot Advance"
+	},
+	"AppDescription": {
+		"en": "Advance App for serious music browsing"
+	},
+	"SupportedLanguages": [
+		"en"
+	],
+	"RequiredPermissions": [
+		"https://*",
+		"http://*"
+	],
+	"RequiredInterface": "1",
+	"VendorIdentifier": "com.dreimsbach"
+}

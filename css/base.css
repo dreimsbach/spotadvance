@@ -1,0 +1,14 @@
+body {
+  font: 12px/20px Arial, Helvetica, sans-serif;
+  color: #666666;
+  padding: 30px;
+}
+
+#search-results {
+  max-height:700px;
+  overflow-y:scroll;
+}
+
+.album {
+  float:left;
+}
