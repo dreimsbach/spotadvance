@@ -16,31 +16,18 @@ var SearchController = (function() {
   }
 
   SearchController.prototype._prepareRequest = function(event) {
-    var searchString = "",
-        $band = $("#band"),
-        $track = $("#track"),
-        $label = $("#label"),
-        $year = $("#year");
+    var searchString = "",        
+        inputs = [];
+    $("input").each(function() {
+      inputs.push(new Input($(this)));
+    });
+     
+    $.each(inputs, function() {
+      if (this.isValid()) {
+        searchString += " " + this.getKey() + ":\"" + this.getValue() + "\"";
+      }
+    }); 
     
-    
-    //TODO alls schöner
-    if ($band.val() !== $band.attr("title") && $band.val() !== "") {
-      searchString = searchString + " artist:\"" + $band.val() + "\"";
-    }
-
-    if ($track.val() !== $track.attr("title") && $track.val() !== "") {
-      searchString = searchString + " track:\"" +$track.val() + "\"";
-    }
-
-    if ($label.val() !== $label.attr("title") && $label.val() !== "") {
-      searchString = searchString + " label:\"" + $label.val() + "\"";
-    }
-
-    if ($year.val() !== $year.attr("title") && $year.val() !== "") {
-      searchString = searchString + " year:" + $year.val();
-    }    
-    
-    console.log(searchString);
   
   
     return searchString;
@@ -69,6 +56,28 @@ var SearchController = (function() {
     
   };
   return SearchController;
+})();
+
+var Input = (function() {
+
+  function Input($input) {
+    this.$input = $input;
+  }
+  
+  Input.prototype.isValid = function() {
+    var value = this.$input.val()
+    return value !== this.$input.attr("title") && value !== "";
+  }
+  
+  Input.prototype.getValue = function() {
+    return this.$input.val();
+  }
+
+  Input.prototype.getKey = function() {
+    return this.$input.data("key");
+  }
+  
+  return Input;
 })();
   
 
