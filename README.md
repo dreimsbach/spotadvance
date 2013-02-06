@@ -8,7 +8,7 @@ Installation Guide:
   "My Documents/Spotify" (Windows user)<br/>
   "~/Spotify" (Mac/Linux user)
 - Extract the spotadvance folder into the newly created folder
-- On Spotify, run in search field: spotify:app:spotadvance
+- On Spotify, run in search field: <strong>spotify:app:spotadvance</strong>
 
 I don't know if it is working only for Spotify developers.<br/>
 To enable a Spotify developer account see: https://developer.spotify.com/technologies/apps/#developer-account
