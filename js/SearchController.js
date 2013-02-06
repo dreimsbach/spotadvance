@@ -24,11 +24,13 @@ var SearchController = (function() {
      
     $.each(inputs, function() {
       if (this.isValid()) {
-        searchString += " " + this.getKey() + ":\"" + this.getValue() + "\"";
+        if (this.useBrackets()) {
+          searchString += " " + this.getKey() + ":\"" + this.getValue() + "\"";
+        } else {
+          searchString += " " + this.getKey() + ":" + this.getValue();
+        }
       }
     }); 
-    
-  
   
     return searchString;
   };
@@ -40,14 +42,15 @@ var SearchController = (function() {
         search = new spotifyModel.Search(searchString);
     
     $container.empty();
-    search.localResults = spotifyModel.LOCALSEARCHRESULTS.APPEND;		// Local files last
+    search.localResults = spotifyModel.LOCALSEARCHRESULTS.IGNORE;
+    search.searchPlaylists = false;
     search.observe(spotifyModel.EVENT.CHANGE, function() {
       console.log(search);
       if(search.albums.length) {
         $.each(search.albums,function(index,album){
-          console.log(album);
           $container.append('<div class="album"><a href="'+album.data.uri+'"><img src="'+ album.data.cover +'" /></div>');
         });
+       $container.append('<div class="clear"></div>');
       } else {
         $container.append('<div>No albums in results</div>');
       }
@@ -76,6 +79,11 @@ var Input = (function() {
   Input.prototype.getKey = function() {
     return this.$input.data("key");
   }
+  
+  Input.prototype.useBrackets = function() {
+    return this.$input.data("useBrackets");
+  }
+  
   
   return Input;
 })();
