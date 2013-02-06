@@ -15,5 +15,6 @@ To enable a Spotify developer account see: https://developer.spotify.com/technol
 
 
 Changelog:
+
 0.0.1
 - Basic Search Functions from the current weak Spotify API
