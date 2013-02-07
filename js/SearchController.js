@@ -24,7 +24,7 @@ var SearchController = (function() {
      
     $.each(inputs, function() {
       if (this.isValid()) {
-        if (this.useBrackets()) {
+        if (!this.hideBrackets()) {
           searchString += " " + this.getKey() + ":\"" + this.getValue() + "\"";
         } else {
           searchString += " " + this.getKey() + ":" + this.getValue();
@@ -80,8 +80,8 @@ var Input = (function() {
     return this.$input.data("key");
   }
   
-  Input.prototype.useBrackets = function() {
-    return this.$input.data("useBrackets");
+  Input.prototype.hideBrackets = function() {
+    return this.$input.data("hidebrackets");
   }
   
   
