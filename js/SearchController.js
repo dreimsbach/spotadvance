@@ -44,6 +44,7 @@ var SearchController = (function() {
     $container.empty();
     search.localResults = spotifyModel.LOCALSEARCHRESULTS.IGNORE;
     search.searchPlaylists = false;
+    search.searchTracks = false;
     search.observe(spotifyModel.EVENT.CHANGE, function() {
       console.log(search);
       if(search.albums.length) {
